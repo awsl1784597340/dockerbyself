@@ -12,6 +12,10 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
+          <el-menu-item index="1" @click="goToCourseStudent" v-show="identity=='学生'">
+            <i class="el-icon-menu"></i>
+            <span slot="title">控制面板</span>
+          </el-menu-item>
           <el-menu-item index="1" @click="goToExperiment" v-show="identity=='学生'">
             <i class="el-icon-menu"></i>
             <span slot="title">课程实验</span>
@@ -172,6 +176,14 @@ export default {
       this.$router.push({
         name: "AuthConfig"
       });
+    },
+
+
+    // new student
+    goToCourseStudent(){
+      this.$router.push({
+        name:"Studentcourselist"
+      })
     }
   }
 };

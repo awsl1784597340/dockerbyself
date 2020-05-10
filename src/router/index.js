@@ -27,6 +27,14 @@ import UpdateSysAdmins from "../components/UserAdmin/UpdateSysAdmins"
 import AddSysAdmins from "../components/UserAdmin/AddSysAdmins"
 import AuthConfig from "../components/UserAdmin/AuthConfig"
 
+//student
+import studentcourse from "../components/Student/Studentcourselist"
+
+
+
+
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -149,5 +157,14 @@ export default new Router({
             name: 'AuthConfig',
             component: AuthConfig
         },
+
+
+
+        //new student
+        {
+            path: '/student/course',
+            name: 'Studentcourselist',
+            component: studentcourse
+        }
     ]
 })
