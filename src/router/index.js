@@ -11,7 +11,7 @@ import Ping from "../components/Common/ping"
 import ExperimentList from "../components/Student/ExperimentList";
 import GetCourse from "../components/Student/GetCourse";
 import GradeList from "../components/Student/GradeList";
-//Teacherandassistant
+//TeacherAndAssistant
 import CourseinfoAssistant from "../components/Teacherandassistant/CourseinfoAssistant";
 import CourseinfoTeaceher from "../components/Teacherandassistant/CourseinfoTeaceher";
 import CourseListAssistant from "../components/Teacherandassistant/CourseListAssistant";

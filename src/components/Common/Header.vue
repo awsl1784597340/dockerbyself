@@ -53,7 +53,8 @@ export default {
   },
   computed: {
     isLogin() {
-      this.identity = getCookie("identity");
+      let that =this
+      that.identity = getCookie("identity");
       return this.identity;
     }
   },

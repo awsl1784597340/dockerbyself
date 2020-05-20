@@ -68,13 +68,6 @@ export default {
               .then(function(response) {
                 console.log(response);
                 if (response.status == 200) {
-                  // that.$router.push({
-                  //     name: "Experiment",
-                  //     // params: {
-                  //     //     id: activity_id,
-                  //     //     data: response.data.data
-                  //     // }
-                  // });
                   var data = response.data.data;
                   var identityuser = [];
                   for (var item in data.Roles) {
@@ -90,8 +83,8 @@ export default {
                     setCookie("userId", data.userId);
                     setCookie("identity", "学生");
                     window.location.reload();
-                    that.$router.push({
-                      name: "ListExperiments"
+                    this.$router.push({
+                      name: "Ping"
                     });
                   } else {
                     alert("请选择正确的身份");
@@ -126,8 +119,8 @@ export default {
                     setCookie("identity", "助教");
 
                     window.location.reload();
-                    that.$router.push({
-                      name: "/"
+                    this.$router.push({
+                      name: "Ping"
                     });
                   } else {
                     alert("请选择正确的身份");
@@ -162,8 +155,8 @@ export default {
                     setCookie("identity", "教师");
 
                     window.location.reload();
-                    that.$router.push({
-                      name: "/"
+                    this.$router.push({
+                      name: "Ping"
                     });
                   } else {
                     alert("请选择正确的身份");
@@ -198,8 +191,8 @@ export default {
                     setCookie("identity", "系统管理员");
                     //window.location.reload();
                     window.location.reload();
-                    that.$router.push({
-                      name: "DashBoard"
+                    this.$router.push({
+                      name: "Ping"
                     });
                   } else {
                     alert("请选择正确的身份");
@@ -234,8 +227,8 @@ export default {
                     setCookie("identity", "用户管理员");
 
                     window.location.reload();
-                    that.$router.push({
-                      name: "/"
+                    this.$router.push({
+                      name: "Ping"
                     });
                   } else {
                     alert("请选择正确的身份");
