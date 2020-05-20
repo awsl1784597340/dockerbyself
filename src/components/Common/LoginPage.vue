@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="loginPage">
     <div class="title">登录</div>

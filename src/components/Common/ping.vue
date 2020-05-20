@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="ping">连接状态：{{pingpoint}}</div>
 </template>

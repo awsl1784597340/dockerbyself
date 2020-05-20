@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div class="settings">
         <div class="title">个人设置</div>

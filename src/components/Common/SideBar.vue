@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="sidebar">
     <el-row class="tac" v-show="identity!='未登录'">

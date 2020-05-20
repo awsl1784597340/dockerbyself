@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div class="cadvisor">
         <iframe class="content" :src="addr"></iframe>
