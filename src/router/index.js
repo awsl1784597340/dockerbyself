@@ -4,11 +4,29 @@ import Router from 'vue-router'
 import Header from "../components/Common/Header"
 import SideBar from "../components/Common/SideBar"
 import CAdvisor from "../components/SystemAdmin/CAdvisor"
-import EFK from "../components/SystemAdmin/EFK"
 import Settings from "../components/Common/Settings"
 import LoginPage from "../components/Common/LoginPage"
 import Ping from "../components/Common/ping"
 //student
+import ExperimentList from "../components/Student/ExperimentList";
+import GetCourse from "../components/Student/GetCourse";
+import GradeList from "../components/Student/GradeList";
+//Teacherandassistant
+import CourseinfoAssistant from "../components/Teacherandassistant/CourseinfoAssistant";
+import CourseinfoTeaceher from "../components/Teacherandassistant/CourseinfoTeaceher";
+import CourseListAssistant from "../components/Teacherandassistant/CourseListAssistant";
+import CourseListTeacher from "../components/Teacherandassistant/CourseListTeacher";
+import Experimentinfo from "../components/Teacherandassistant/Experimentinfo";
+import ManageExperiment from "../components/Teacherandassistant/ManageExperiment";
+import UpdateGrade from "../components/Teacherandassistant/UpdateGrade";
+//UserAdmin
+import ManageCourse from "../components/UserAdmin/ManageCourse"
+import AssignTeacher from "../components/UserAdmin/AssignTeacher"
+import AssignStudents from "../components/UserAdmin/AssignTeacher"
+//SystemAdmin
+import GetUser from "../components/SystemAdmin/GetUser";
+import ManageContainer from "../components/SystemAdmin/ManageContainer";
+import ResourceUsage from "../components/SystemAdmin/ResourceUsage";
 
 
 Vue.use(Router)
@@ -38,11 +56,6 @@ export default new Router({
             component: CAdvisor
         },
         {
-            path: '/efk',
-            name: 'EFK',
-            component: EFK
-        },
-        {
             path: '/settings',
             name: 'Settings',
             component: Settings
@@ -52,5 +65,90 @@ export default new Router({
             name: 'LoginPage',
             component: LoginPage
         },
+        //NewAdd
+        //Student
+        {
+            path: '/ExperimentList/:id',
+            name:'ExperimentList',
+            component: ExperimentList
+        },
+        {
+            path: '/GetCourse',
+            name: 'GetCourse',
+            component: GetCourse
+        },
+        {
+            path: '/GradeList',
+            name:'GradeList',
+            component: GradeList
+        },
+        //TeacherAndAssistant
+        {
+            path: '/CourseinfoAssistant/:id',
+            name:'CourseinfoAssistant',
+            component: CourseinfoAssistant
+        },
+        {
+            path: '/CourseinfoTeacher/:id',
+            name:'CourseinfoTeacher',
+            component: CourseinfoTeaceher
+        },
+        {
+            path: '/CourseListAssistant',
+            name:'CourseListAssistant',
+            component: CourseListAssistant
+        },
+        {
+            path: '/CourseListTeacher',
+            name:'CourseListTeacher',
+            component: CourseListTeacher
+        },
+        {
+            path: '/Experimentinfo/:id',
+            name:'Experimentinfo',
+            component: Experimentinfo
+        },
+        {
+            path: '/ManageExperiment',
+            name:'ManageExperiment',
+            component:ManageExperiment
+        },
+        {
+            path:'/UpdateGrade',
+            name:'UpdateGrade',
+            component: UpdateGrade
+        },
+        //UserAdmin
+        {
+            path:'/ManageCouerse',
+            name:'ManageCourse',
+            component: ManageCourse
+        },
+        {
+            path:'/AssignTeacher/:id',
+            name:'AssignTeacher',
+            component: AssignTeacher
+        },
+        {
+            path:'/AssignStudents/:id',
+            name:'AssignStudemts',
+            component: AssignStudents
+        },
+        //SystemAdmin
+        {
+            path:'/GetUser',
+            name:'GetUser',
+            component: GetUser
+        },
+        {
+            path:'/ManageContainer',
+            name: 'ManageContainer',
+            component: ManageContainer
+        },
+        {
+            path: '/ResourceUsage',
+            name:'ResourceUsage',
+            component: ResourceUsage
+        }
     ]
 })

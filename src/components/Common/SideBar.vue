@@ -12,74 +12,75 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-menu-item index="1" @click="goToCourseStudent" v-show="identity=='学生'">
+          <el-menu-item index="1" @click="GetCourse" v-show="identity=='学生'">
             <i class="el-icon-menu"></i>
-            <span slot="title">控制面板</span>
+            <span slot="title">课程列表</span>
           </el-menu-item>
-          <el-menu-item index="1" @click="goToExperiment" v-show="identity=='学生'">
+          <el-menu-item index="2" @click="GradeList" v-show="identity=='学生'">
             <i class="el-icon-menu"></i>
-            <span slot="title">课程实验</span>
+            <span slot="title">查看分数</span>
           </el-menu-item>
-          <el-menu-item index="1" @click="ping" v-show="identity=='学生'">
-            <i class="el-icon-menu"></i>
-            <span slot="title">ping</span>
-          </el-menu-item>
-          <el-menu-item index="1" @click="goToExperiment" v-show="identity=='助教'">
-            <i class="el-icon-menu"></i>
-            <span slot="title">课程实验</span>
-          </el-menu-item>
-          <el-menu-item index="1" @click="ping" v-show="identity=='助教'">
+          <el-menu-item index="3" @click="ping" v-show="identity=='学生'">
             <i class="el-icon-menu"></i>
             <span slot="title">ping</span>
           </el-menu-item>
 
-          <el-menu-item index="1" @click="addExperiment" v-show="identity=='教师'">
+          <el-menu-item index="1" @click="CourseListAssistant" v-show="identity=='助教'">
             <i class="el-icon-document"></i>
-            <span slot="title">添加实验</span>
+            <span slot="title">管理课程</span>
           </el-menu-item>
-          <el-menu-item index="2" @click="manageExperiment" v-show="identity=='教师'">
+          <el-menu-item index="2" @click="ManageExperiment" v-show="identity=='助教'">
             <i class="el-icon-setting"></i>
             <span slot="title">管理实验</span>
           </el-menu-item>
-          <el-menu-item index="1" @click="ping" v-show="identity=='教师'">
+          <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='教师'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">管理实验</span>
+          </el-menu-item>
+          <el-menu-item index="4" @click="ping" v-show="identity=='助教'">
             <i class="el-icon-menu"></i>
             <span slot="title">ping</span>
           </el-menu-item>
 
-          <el-menu-item index="1" @click="goToDashboard" v-show="identity=='系统管理员'">
-            <i class="el-icon-setting"></i>
-            <span slot="title">控制面板</span>
+          <el-menu-item index="1" @click="CourseListTeacher" v-show="identity=='教师'">
+            <i class="el-icon-document"></i>
+            <span slot="title">管理课程</span>
           </el-menu-item>
-          <el-menu-item index="2" @click="goToCadvisor" v-show="identity=='系统管理员'">
+          <el-menu-item index="2" @click="ManageExperiment" v-show="identity=='教师'">
             <i class="el-icon-setting"></i>
-            <span slot="title">流量监控</span>
+            <span slot="title">管理实验</span>
           </el-menu-item>
-          <el-menu-item index="3" @click="goToEFK" v-show="identity=='系统管理员'">
+          <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='教师'">
             <i class="el-icon-setting"></i>
-            <span slot="title">日志监控</span>
+            <span slot="title">管理实验</span>
+          </el-menu-item>
+          <el-menu-item index="4" @click="ping" v-show="identity=='教师'">
+            <i class="el-icon-menu"></i>
+            <span slot="title">ping</span>
+          </el-menu-item>
+
+          <el-menu-item index="1" @click="ResourceUsage" v-show="identity=='系统管理员'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">资源使用情况</span>
+          </el-menu-item>
+          <el-menu-item index="2" @click="GetUser" v-show="identity=='系统管理员'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">用户在线情况</span>
+          </el-menu-item>
+          <el-menu-item index="3" @click="ManageContainer" v-show="identity=='系统管理员'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">容器开启情况</span>
           </el-menu-item>
           <el-menu-item index="4" @click="ping" v-show="identity=='系统管理员'">
             <i class="el-icon-menu"></i>
             <span slot="title">ping</span>
           </el-menu-item>
 
-          <el-menu-item index="1" @click="manageStudent" v-show="identity=='用户管理员'">
+          <el-menu-item index="1" @click="ManageCourse" v-show="identity=='用户管理员'">
             <i class="el-icon-setting"></i>
-            <span slot="title">学生管理</span>
+            <span slot="title">课程管理</span>
           </el-menu-item>
-          <el-menu-item index="2" @click="manageTeacher" v-show="identity=='用户管理员'">
-            <i class="el-icon-setting"></i>
-            <span slot="title">教师管理</span>
-          </el-menu-item>
-          <el-menu-item index="3" @click="manageSysAdmin" v-show="identity=='用户管理员'">
-            <i class="el-icon-setting"></i>
-            <span slot="title">系统管理员管理</span>
-          </el-menu-item>
-          <el-menu-item index="4" @click="authConfig" v-show="identity=='用户管理员'">
-            <i class="el-icon-setting"></i>
-            <span slot="title">用户授权配置</span>
-          </el-menu-item>
-          <el-menu-item index="1" @click="ping" v-show="identity=='用户管理员'">
+          <el-menu-item index="2" @click="ping" v-show="identity=='用户管理员'">
             <i class="el-icon-menu"></i>
             <span slot="title">ping</span>
           </el-menu-item>
@@ -117,7 +118,8 @@ export default {
   },
   computed: {
     isLogin() {
-      this.identity = getCookie("identity");
+      var that=this
+      that.identity = getCookie("identity");
       return this.identity;
     }
   },
@@ -127,63 +129,60 @@ export default {
         name: "Ping"
       });
     },
-    goToExperiment() {
+    //NewAdd
+    //Student
+    GetCourse(){
       this.$router.push({
-        name: "ListExperiments"
+        name: "GetCourse"
       });
     },
-    addExperiment() {
+    GradeList(){
       this.$router.push({
-        name: "AddExperiments"
+        name: "GradeList"
       });
     },
-    manageExperiment() {
+    //SystemAdmin
+    GetUser(){
       this.$router.push({
-        name: "ManageExperiments"
+        name: "GetUser"
       });
     },
-    goToDashboard() {
+    ManageContainer(){
       this.$router.push({
-        name: "DashBoard"
+        name: "ManageContainer"
       });
     },
-    goToCadvisor() {
+    ResourceUsage(){
       this.$router.push({
-        name: "CAdvisor"
+        name: "ResourceUsage"
       });
     },
-    goToEFK() {
+    //TeacherAndAssistant
+    CourseListAssistant(){
       this.$router.push({
-        name: "EFK"
+        name: "CourseListAssistant"
       });
     },
-    manageStudent() {
+    CourseListTeacher(){
       this.$router.push({
-        name: "ManageStudents"
+        name: "CourseListTeacher"
       });
     },
-    manageTeacher() {
+    ManageExperiment(){
       this.$router.push({
-        name: "ManageTeachers"
+        name: "ManageExperiment"
       });
     },
-    manageSysAdmin() {
+    UpdateGrade(){
       this.$router.push({
-        name: "ManageSysAdmins"
+        name: "UpdateGrade"
       });
     },
-    authConfig() {
+    //UserAdmin
+    ManageCourse(){
       this.$router.push({
-        name: "AuthConfig"
+        name: "ManageCourse"
       });
-    },
-
-
-    // new student
-    goToCourseStudent(){
-      this.$router.push({
-        name:"Studentcourselist"
-      })
     }
   }
 };
