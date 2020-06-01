@@ -16,7 +16,7 @@
       <el-menu-item index="2" class="title" @click="goToFrontPage">网络安全实验平台</el-menu-item>
       <el-submenu index="3" class="identity" v-show="identity!='未登录'">
         <template slot="title">{{identity}}</template>
-        <el-menu-item index="3-1" @click="goToSettings">个人设置</el-menu-item>
+        <el-menu-item index="3-1" @click="goToSettings">修改密码</el-menu-item>
         <el-menu-item index="3-2" @click="logOut">退出</el-menu-item>
         <!--<el-menu-item index="3-3">选项3</el-menu-item>-->
       </el-submenu>

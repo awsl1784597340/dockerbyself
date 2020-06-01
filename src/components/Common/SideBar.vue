@@ -53,7 +53,7 @@
           </el-menu-item>
           <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='教师'">
             <i class="el-icon-setting"></i>
-            <span slot="title">管理实验</span>
+            <span slot="title">上传成绩</span>
           </el-menu-item>
           <el-menu-item index="4" @click="ping" v-show="identity=='教师'">
             <i class="el-icon-menu"></i>
