@@ -7,13 +7,14 @@ import CAdvisor from "../components/SystemAdmin/CAdvisor"
 import Settings from "../components/Common/Settings"
 import LoginPage from "../components/Common/LoginPage"
 import Ping from "../components/Common/ping"
+import Empty from "../components/Common/empty"
 //student
 import ExperimentList from "../components/Student/ExperimentList";
 import GetCourse from "../components/Student/GetCourse";
 import GradeList from "../components/Student/GradeList";
-//TeacherAndAssistant
+//TeacherAndAgssistant
 import CourseinfoAssistant from "../components/Teacherandassistant/CourseinfoAssistant";
-import CourseinfoTeaceher from "../components/Teacherandassistant/CourseinfoTeaceher";
+import CourseinfoTeacher from "../components/Teacherandassistant/CourseinfoTeacher";
 import CourseListAssistant from "../components/Teacherandassistant/CourseListAssistant";
 import CourseListTeacher from "../components/Teacherandassistant/CourseListTeacher";
 import Experimentinfo from "../components/Teacherandassistant/Experimentinfo";
@@ -35,6 +36,11 @@ export default new Router({
     // 设置链接激活时使用的 CSS 类名
     linkActiveClass: "active",
     routes: [
+        {
+            path: '/',
+            name:'Empty',
+            component: Empty
+        },
         {
             path: '/ping',
             name: 'Ping',
@@ -68,7 +74,7 @@ export default new Router({
         //NewAdd
         //Student
         {
-            path: '/ExperimentList/:id',
+            path: '/ExperimentList',
             name:'ExperimentList',
             component: ExperimentList
         },
@@ -84,14 +90,14 @@ export default new Router({
         },
         //TeacherAndAssistant
         {
-            path: '/CourseinfoAssistant/:id',
+            path: '/CourseinfoAssistant',
             name:'CourseinfoAssistant',
             component: CourseinfoAssistant
         },
         {
-            path: '/CourseinfoTeacher/:id',
+            path: '/CourseinfoTeacher',
             name:'CourseinfoTeacher',
-            component: CourseinfoTeaceher
+            component: CourseinfoTeacher
         },
         {
             path: '/CourseListAssistant',
@@ -104,7 +110,7 @@ export default new Router({
             component: CourseListTeacher
         },
         {
-            path: '/Experimentinfo/:id',
+            path: '/Experimentinfo',
             name:'Experimentinfo',
             component: Experimentinfo
         },
@@ -125,12 +131,12 @@ export default new Router({
             component: ManageCourse
         },
         {
-            path:'/AssignTeacher/:id',
+            path:'/AssignTeacher',
             name:'AssignTeacher',
             component: AssignTeacher
         },
         {
-            path:'/AssignStudents/:id',
+            path:'/AssignStudents',
             name:'AssignStudemts',
             component: AssignStudents
         },

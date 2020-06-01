@@ -34,7 +34,12 @@ export default {
         this.isRouterAlive = true
       })
     }
-  }
+  },
+  created() {
+    if (this.$router.path ==='/login') {
+      this.$router.push('/')
+    }
+  },
 }
 </script>
 

@@ -4,8 +4,6 @@ export function setCookie(key,value) {
     exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * 36500); //保存的天数，我这里写的是100年
     //字符串拼接cookie
     window.document.cookie = key + "=" + value + ";path=/;expires=" + exdate.toGMTString();
-    console.log("get", key, value)
-    console.log("current cookie", window.document.cookie)
 };
 //读取cookie
 export function getCookie(param) {

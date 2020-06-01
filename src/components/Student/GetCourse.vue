@@ -8,7 +8,7 @@
                 <el-card :body-style="{ padding: '0px' }">
                     <img src="../../assets/course.png" class="image">
                     <div style="padding: 14px;">
-                        <span>课程：{{course.name}}</span>
+                        <span>课程名称：{{course.course_name}}</span>
                         <div class="bottom clearfix">
                             <time class="time">{{ course.date }}</time>
                             <el-button type="text" class="button" @click="toExperiment(course)">点击进入课程</el-button>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import { setCookie, getCookie } from '../../js/cookieUtil'
     export default {
         name: "GetCourse",
         data(){
@@ -30,15 +31,20 @@
             }
         },
         methods:{
-            toExperiment(){
+            toExperiment(course){
                 let that=this
+                console.log(course.ID)
+                this.$router.push({
+                    name:'ExperimentList',
+                    params:{id:course.ID}
+                })
             }
         },
         mounted: function(){
             let that = this
             let identity = this.isLogin
             if (identity == "学生") {
-                this.$axios.get('/api/student/course')
+                this.$axios.get('/api/student/courses')
                     .then(function (response) {
                         if (response.status == 200) {
                             that.courseArr = response.data.data

@@ -1,11 +1,10 @@
-/* eslint-disable */
 <template>
-    
+    <div></div>
 </template>
 
 <script>
     export default {
-        name: "CourseinfoTeaceher"
+        name: "empty"
     }
 </script>
 

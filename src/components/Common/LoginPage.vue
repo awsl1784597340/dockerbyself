@@ -53,6 +53,7 @@ export default {
     };
   },
   inject: ["reload"],
+
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
@@ -83,9 +84,6 @@ export default {
                     setCookie("userId", data.userId);
                     setCookie("identity", "学生");
                     window.location.reload();
-                    this.$router.push({
-                      name: "Ping"
-                    });
                   } else {
                     alert("请选择正确的身份");
                     this.$axios.get("/api/logout");
@@ -119,9 +117,6 @@ export default {
                     setCookie("identity", "助教");
 
                     window.location.reload();
-                    this.$router.push({
-                      name: "Ping"
-                    });
                   } else {
                     alert("请选择正确的身份");
                     this.$axios.get("/api/logout");
@@ -155,9 +150,6 @@ export default {
                     setCookie("identity", "教师");
 
                     window.location.reload();
-                    this.$router.push({
-                      name: "Ping"
-                    });
                   } else {
                     alert("请选择正确的身份");
                     this.$axios.get("/api/logout");
@@ -190,10 +182,9 @@ export default {
                     setCookie("userId", data.userId);
                     setCookie("identity", "系统管理员");
                     //window.location.reload();
-                    window.location.reload();
-                    this.$router.push({
-                      name: "Ping"
-                    });
+                    // window.location.reload();
+                    // window.setTimeout(that.back, 2000)
+                    window.setTimeout(window.location.reload(),500)
                   } else {
                     alert("请选择正确的身份");
                     this.$axios.get("/api/logout");
@@ -227,9 +218,6 @@ export default {
                     setCookie("identity", "用户管理员");
 
                     window.location.reload();
-                    this.$router.push({
-                      name: "Ping"
-                    });
                   } else {
                     alert("请选择正确的身份");
                     this.$axios.get("/api/logout");

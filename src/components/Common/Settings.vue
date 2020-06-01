@@ -3,12 +3,11 @@
     <div class="settings">
         <div class="title">修改密码</div>
         <el-form ref="form" :model="form" label-width="80px">
-            <el-form-item label="编号" disabled="true">
-                <el-input v-model="form.id" :disabled="true"></el-input>
-            </el-form-item>
             <el-form-item label="请输入密码">
                 <el-input v-model="form.NewPassword1"></el-input>
             </el-form-item>
+            <h1>{{form.NewPassword1}}</h1>
+            <h1>{{form.NewPassword1===form.NewPassword2}}</h1>
             <el-form-item label="请再次输入">
                 <el-input v-model="form.NewPassword2"></el-input>
             </el-form-item>
@@ -34,8 +33,8 @@
                     class: '',
                     email: '',
                     phone: '',
-                    NewPassword1:'',
-                    NewPassword2:'',
+                    NewPassword1:"",
+                    NewPassword2:"",
 
                 },
                 identity: ""
@@ -69,29 +68,29 @@
             }
         },
         methods: {
-            onSubmit() {
-                var that = this
-                if(this.form.NewPassword1===this.form.NewPassword2)
-                {
-                    that.$axios.post('api/password',
+            onSubmit: function () {
+                if (this.form.NewPassword1 === this.form.NewPassword2) {
+                    let that = this
+                    console.log(that.form.NewPassword1)
+                    this.$axios.post("api/password",
                         {
-                            pwd:this.form.NewPassword1
+                            pwd: that.form.NewPassword1
                         }).then(function (response) {
-                            if(response.status==200){
-                                alert('success')
-                                window.setTimeout("this.back()",2000)
-                            }else{
-                                alert('there is something wrong , please try it later')
-                            }
+                        if (response.status === 201) {
+                            alert('success')
+                            console.log(response.data)
+                            window.setTimeout(that.back, 2000)
+                        } else {
+                            alert('there is something wrong , please try it later')
+                        }
                     })
-                }
-                else{
+                } else {
                     alert('两次密码输入不一致')
                 }
             },
             back() {
                 this.$router.push({
-                    name: "/",
+                    name: "Empty",
                 });
             }
         }
