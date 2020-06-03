@@ -62,7 +62,7 @@ export default {
           var that = this;
           if (identity == "学生") {
             this.$axios
-              .post("/api/login", {
+              .post("api/login", {
                 email: this.ruleForm.name,
                 password: this.ruleForm.password
               })
@@ -86,7 +86,7 @@ export default {
                     window.location.reload();
                   } else {
                     alert("请选择正确的身份");
-                    this.$axios.get("/api/logout");
+                    this.$axios.get("api/logout");
                   }
                 }
               })
@@ -96,7 +96,7 @@ export default {
               });
           } else if (identity == "助教") {
             this.$axios
-              .post("/api/login", {
+              .post("api/login", {
                 email: this.ruleForm.name,
                 password: this.ruleForm.password
               })
@@ -119,7 +119,7 @@ export default {
                     window.location.reload();
                   } else {
                     alert("请选择正确的身份");
-                    this.$axios.get("/api/logout");
+                    this.$axios.get("api/logout");
                   }
                 }
               })
@@ -129,7 +129,7 @@ export default {
               });
           } else if (identity == "教师") {
             this.$axios
-              .post("/api/login", {
+              .post("api/login", {
                 email: this.ruleForm.name,
                 password: this.ruleForm.password
               })
@@ -152,7 +152,7 @@ export default {
                     window.location.reload();
                   } else {
                     alert("请选择正确的身份");
-                    this.$axios.get("/api/logout");
+                    this.$axios.get("api/logout");
                   }
                 }
               })
@@ -162,7 +162,7 @@ export default {
               });
           } else if (identity == "系统管理员") {
             this.$axios
-              .post("/api/login", {
+              .post("api/login", {
                 email: this.ruleForm.name,
                 password: this.ruleForm.password
               })
@@ -187,7 +187,7 @@ export default {
                     window.setTimeout(window.location.reload(),500)
                   } else {
                     alert("请选择正确的身份");
-                    this.$axios.get("/api/logout");
+                    this.$axios.get("api/logout");
                   }
                 }
               })
@@ -197,7 +197,7 @@ export default {
               });
           } else if (identity == "用户管理员") {
             this.$axios
-              .post("/api/login", {
+              .post("api/login", {
                 email: this.ruleForm.name,
                 password: this.ruleForm.password
               })
@@ -220,7 +220,7 @@ export default {
                     window.location.reload();
                   } else {
                     alert("请选择正确的身份");
-                    this.$axios.get("/api/logout");
+                    this.$axios.get("api/logout");
                   }
                 }
               })
