@@ -34,7 +34,7 @@
             <i class="el-icon-setting"></i>
             <span slot="title">管理实验</span>
           </el-menu-item>
-          <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='教师'">
+          <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='助教'">
             <i class="el-icon-setting"></i>
             <span slot="title">管理实验</span>
           </el-menu-item>

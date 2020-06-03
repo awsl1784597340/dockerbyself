@@ -32,7 +32,6 @@
         },
         methods:{
             toExperiment(course){
-                let that=this
                 console.log(course.ID)
                 this.$router.push({
                     name:'ExperimentList',

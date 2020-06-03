@@ -70,7 +70,7 @@ export default {
       });
     },
     logOut() {
-      this.$axios.get("/api/logout");
+      this.$axios.get("api/logout");
       setCookie("id", "");
       setCookie("name", "");
       setCookie("email", "");

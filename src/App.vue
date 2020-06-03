@@ -36,9 +36,7 @@ export default {
     }
   },
   created() {
-    if (this.$router.path ==='/login') {
       this.$router.push('/')
-    }
   },
 }
 </script>

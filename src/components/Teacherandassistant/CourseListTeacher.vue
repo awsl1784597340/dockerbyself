@@ -8,7 +8,7 @@
                 <el-card :body-style="{ padding: '0px' }">
                     <img src="../../assets/course.png" class="image">
                     <div style="padding: 14px;">
-                        <span>课程：{{course.name}}</span>
+                        <span>课程：{{course.course_name}}</span>
                         <div class="bottom clearfix">
                             <time class="time">{{ course.date }}</time>
                             <el-button type="text" class="button" @click="toExperiment(course)">点击进入课程</el-button>
@@ -31,8 +31,11 @@
             }
         },
         methods:{
-            toExperiment(){
-                let that=this
+            toExperiment(course){
+                this.$router.push({
+                    name:'CourseinfoTeacher',
+                    params:{id:course.ID}
+                })
             }
         },
         mounted: function(){
@@ -43,7 +46,6 @@
                     .then(function (response) {
                         if (response.status == 200) {
                             that.courseArr = response.data.data
-                            console.log(that.courseArr)
                         }
                     })
                     .catch(function (error) {
