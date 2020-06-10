@@ -6,8 +6,6 @@
             <el-form-item label="请输入密码">
                 <el-input v-model="form.NewPassword1"></el-input>
             </el-form-item>
-            <h1>{{form.NewPassword1}}</h1>
-            <h1>{{form.NewPassword1===form.NewPassword2}}</h1>
             <el-form-item label="请再次输入">
                 <el-input v-model="form.NewPassword2"></el-input>
             </el-form-item>
@@ -35,7 +33,7 @@
                     phone: '',
                     NewPassword1:"",
                     NewPassword2:"",
-
+                    flag:false,
                 },
                 identity: ""
             }
@@ -72,18 +70,36 @@
                 if (this.form.NewPassword1 === this.form.NewPassword2) {
                     let that = this
                     console.log(that.form.NewPassword1)
-                    this.$axios.post("api/password",
-                        {
-                            pwd: that.form.NewPassword1
-                        }).then(function (response) {
-                        if (response.status === 201) {
-                            alert('success')
-                            console.log(response.data)
-                            window.setTimeout(that.back, 2000)
-                        } else {
-                            alert('there is something wrong , please try it later')
-                        }
-                    })
+                    let formdata=this.$qs.stringify({'pwd': that.form.NewPassword1})
+                    this.$axios({
+                        method: 'post',
+                        url: 'api/password',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data: formdata,  // 直接提交转换后的数据即可
+                    }).then(function (response) {
+                    if (response.status === 201) {
+                        alert('success')
+                        console.log(response.data)
+                        window.setTimeout(that.back, 2000)
+                    } else {
+                        alert('there is something wrong , please try it later')
+                    }
+                })
+
+                    //     this.$axios.post("api/password",
+                    //     {
+                    //         pwd: that.form.NewPassword1
+                    //     }).then(function (response) {
+                    //     if (response.status === 201) {
+                    //         alert('success')
+                    //         console.log(response.data)
+                    //         window.setTimeout(that.back, 2000)
+                    //     } else {
+                    //         alert('there is something wrong , please try it later')
+                    //     }
+                    // })
                 } else {
                     alert('两次密码输入不一致')
                 }

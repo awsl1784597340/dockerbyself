@@ -2,6 +2,8 @@
 <template>
     <div style="margin-left:220px;margin-top:61px">
         <h1>分配助教</h1>
+        <el-input v-model="assid" placeholder="请输入助教id，如果有多个，使用 ',' 分隔"></el-input>
+        <el-button type="primary" plain @click="submit" @keyup.enter="submit">分配</el-button>
     <h1>学生列表</h1>
     <el-table
             :data="tableData"
@@ -46,7 +48,9 @@
         name: "CourseinfoTeacher",
         data(){
             return{
-                tableData:[{id:6,SNo:777}]
+                tableData:[],
+                assid:"",
+                assidform:[],
             }
         },mounted:function (){
             let that = this
@@ -79,6 +83,19 @@
                 that.identity = getCookie("identity");
                 return this.identity;
             },
+        },
+        methods:{
+            submit(){
+                let that=this
+                let id = this.$route.params.id
+                this.assidform=this.assid.split(",")
+                this.$axios.post("api/admin/course/"+id+"/assistants",{assistants:that.assidform}).
+                    then(function (response) {
+                        if (response.status===201)
+                            alert("success")
+                        else alert('bad input')
+                    })
+            }
         }
     }
 </script>

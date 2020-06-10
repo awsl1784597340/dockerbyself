@@ -4,6 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+import qs from 'qs';
+Vue.prototype.$qs = qs
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false
