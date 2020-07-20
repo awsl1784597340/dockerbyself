@@ -23,7 +23,7 @@ import UpdateGrade from "../components/Teacherandassistant/UpdateGrade";
 //UserAdmin
 import ManageCourse from "../components/UserAdmin/ManageCourse"
 import AssignTeacher from "../components/UserAdmin/AssignTeacher"
-import AssignStudents from "../components/UserAdmin/AssignTeacher"
+import AssignStudents from "../components/UserAdmin/AssignStudents"
 //SystemAdmin
 import GetUser from "../components/SystemAdmin/GetUser";
 import ManageContainer from "../components/SystemAdmin/ManageContainer";
@@ -137,7 +137,7 @@ export default new Router({
         },
         {
             path:'/AssignStudents',
-            name:'AssignStudemts',
+            name:'AssignStudents',
             component: AssignStudents
         },
         //SystemAdmin

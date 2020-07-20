@@ -34,7 +34,7 @@
                             'Content-Type': 'application/json;charset=UTF-8'
                         },
                         data: {
-                            experiment: that.eno, grade: that.grade, student: that.sno
+                            experiment: parseInt(that.eno), grade: parseInt(that.grade), student: that.sno
                         }
                     }).then(function (response) {
                     if (response.status == 201)

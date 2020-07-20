@@ -89,7 +89,12 @@
                 let that=this
                 let id = this.$route.params.id
                 this.assidform=this.assid.split(",")
-                this.$axios.post("api/admin/course/"+id+"/assistants",{assistants:that.assidform}).
+                var assidd=[]
+                for(var i =0;i<this.assidform.length;i++)
+                {
+                    assidd.push(parseInt(this.assidform[i]))
+                }
+                this.$axios.post("api/admin/course/"+id+"/assistants",{assistants:assidd}).
                     then(function (response) {
                         if (response.status===201)
                             alert("success")

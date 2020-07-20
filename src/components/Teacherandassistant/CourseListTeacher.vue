@@ -64,65 +64,7 @@
 </script>
 
 <style scoped>
-    .courses {
-        position: fixed;
-        left: 220px;
-        height: 100%;
-        width: 80%;
-    }
 
-    .courses-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 120px;
-    }
-
-    .courses-wrapper .course-item {
-        flex: 0 0 25%;
-        margin-bottom: 30px;
-        margin-left: 30px;
-    }
-
-    .courses-wrapper .course-item .poster {
-        background-size: 150px 150px;
-        width: 150px;
-        height: 150px;
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    .courses-wrapper .course-item .content {
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 10px;
-        font-size: 14px;
-        color: #999;
-        cursor: pointer;
-    }
-
-    .courses-wrapper .course-item .content .title {
-        font-size: 20px;
-        width: 200px;
-        color: #333;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-
-
-    .courses-wrapper .course-item .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
-    .courses-wrapper .course-item .time {
-        margin-bottom: 5px;
-        font-size: 13px;
-        color: #999;
-    }
-
-    .courses-wrapper .course-item .button {
-        padding: 0;
-        float: right;
-    }
 </style>
 
 

@@ -36,7 +36,7 @@
           </el-menu-item>
           <el-menu-item index="3" @click="UpdateGrade" v-show="identity=='助教'">
             <i class="el-icon-setting"></i>
-            <span slot="title">管理实验</span>
+            <span slot="title">上传成绩</span>
           </el-menu-item>
           <el-menu-item index="4" @click="ping" v-show="identity=='助教'">
             <i class="el-icon-menu"></i>
@@ -81,7 +81,15 @@
             <i class="el-icon-setting"></i>
             <span slot="title">课程管理</span>
           </el-menu-item>
-          <el-menu-item index="2" @click="ping" v-show="identity=='用户管理员'">
+          <el-menu-item index="2" @click="AssignTeacher" v-show="identity=='用户管理员'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">教师分配</span>
+          </el-menu-item>
+          <el-menu-item index="3" @click="AssignStudents" v-show="identity=='用户管理员'">
+            <i class="el-icon-setting"></i>
+            <span slot="title">学生分配</span>
+          </el-menu-item>
+          <el-menu-item index="4" @click="ping" v-show="identity=='用户管理员'">
             <i class="el-icon-menu"></i>
             <span slot="title">ping</span>
           </el-menu-item>
@@ -184,6 +192,16 @@ export default {
       this.$router.push({
         name: "ManageCourse"
       });
+    },
+    AssignTeacher(){
+      this.$router.push({
+        name:"AssignTeacher"
+      })
+    },
+    AssignStudents(){
+      this.$router.push({
+        name:"AssignStudents"
+      })
     }
   }
 };
