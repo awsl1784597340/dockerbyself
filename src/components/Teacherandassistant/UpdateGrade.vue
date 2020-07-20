@@ -25,17 +25,32 @@
                 sno:''
             }
         },methods:{
-            submit(){
-                let that=this
-                this.$axios.post('api/admin/experiments/grade/upload',{
-                    grade:
-                        {"experiment":that.eno,"grade":that.grade,"student":that.sno}
-                }).then(function (response) {
-                    if (response.status===201)
-                        alert("success")
-                    else alert('bad input')
-                })
-            }
+             submit(){
+             let that=this
+                    this.$axios({
+                        method: 'post',
+                        url: 'api/admin/experiments/grade/upload',
+                        headers: {
+                            'Content-Type': 'application/json;charset=UTF-8'
+                        },
+                        data: {
+                            experiment: that.eno, grade: that.grade, student: that.sno
+                        }
+                    }).then(function (response) {
+                    if (response.status == 201)
+            alert("success")
+            else alert('bad input')
+            })
+            //     this.$axios.post('api/admin/experiments/grade/upload',{
+            //         experiment:that.eno,
+            //         grade:that.grade,
+            //         student:that.sno
+            //     }).then(function (response) {
+            //         if (response.status == 201)
+            //             alert("success")
+            //         else alert('bad input')
+            //     })
+         }
         }
     }
 </script>
