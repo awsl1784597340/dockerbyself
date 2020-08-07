@@ -31,7 +31,7 @@ export default {
   name: "header",
   data() {
     return {
-      identity: ""
+      identity: "",
     };
   },
   mounted() {
@@ -53,20 +53,20 @@ export default {
   },
   computed: {
     isLogin() {
-      let that =this
+      let that = this;
       that.identity = getCookie("identity");
       return this.identity;
-    }
+    },
   },
   methods: {
     goToFrontPage() {
       this.$router.push({
-        name: "/"
+        name: "/",
       });
     },
     login() {
       this.$router.push({
-        name: "LoginPage"
+        name: "LoginPage",
       });
     },
     logOut() {
@@ -81,15 +81,15 @@ export default {
       setCookie("identity", "");
       window.location.reload();
       this.$router.push({
-        name: "/"
+        name: "/",
       });
     },
     goToSettings() {
       this.$router.push({
-        name: "Settings"
+        name: "Settings",
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

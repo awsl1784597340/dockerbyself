@@ -4,11 +4,11 @@
     <div v-if="flag">
       <div class="title">登录</div>
       <el-form
-              :model="ruleForm"
-              :rules="rules"
-              ref="ruleForm"
-              label-width="100px"
-              class="demo-ruleForm"
+        :model="ruleForm"
+        :rules="rules"
+        ref="ruleForm"
+        label-width="100px"
+        class="demo-ruleForm"
       >
         <el-form-item label="用户名" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
@@ -58,99 +58,102 @@
 </template>
 
 <script>
-  import { setCookie, getCookie } from "../../js/cookieUtil";
-  export default {
-    name: "loginPage",
-    data() {
-      return {
-        ruleForm: {
-          name: "",
-          password: "",
-          identity: ""
-        },
-        rules: {
-          name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-          password: [
-            { required: true, message: "请输入密码", trigger: "change" }
-          ]
-        },
-        identity:[],
-        data:'',
-        flag : true
-      };
-    },
-    inject: ["reload"],
+import { setCookie, getCookie } from "../../js/cookieUtil";
+export default {
+  name: "loginPage",
+  data() {
+    return {
+      ruleForm: {
+        name: "",
+        password: "",
+        identity: "",
+      },
+      rules: {
+        name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+        password: [
+          { required: true, message: "请输入密码", trigger: "change" },
+        ],
+      },
+      identity: [],
+      data: "",
+      flag: true,
+    };
+  },
+  inject: ["reload"],
 
-    methods: {
-      submitForm(formName) {
-        let that=this;
-        this.$refs[formName].validate(valid => {
-          if (valid) {
-            var { name, password, identity } = this.$refs[formName].model;
-            var that = this;
-            this.$axios.post("api/login",{
+  methods: {
+    submitForm(formName) {
+      let that = this;
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          var { name, password, identity } = this.$refs[formName].model;
+          var that = this;
+          this.$axios
+            .post("api/login", {
               email: this.ruleForm.name,
-              password: this.ruleForm.password
-            }).then(function (response) {
-              if(response.status == 200){
-                that.data =response.data.data;
-                for (var item in that.data.Roles){
+              password: this.ruleForm.password,
+            })
+            .then(function (response) {
+              if (response.status == 200) {
+                that.data = response.data.data;
+                for (var item in that.data.Roles) {
                   that.identity.push(that.data.Roles[item].ID);
                 }
-                that.flag = false
+                that.flag = false;
               }
-            }).catch(function(error) {
+            })
+            .catch(function (error) {
               that.$message.error("登录失败，请重试");
               console.log(error);
-            })
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-      toStudent(){
-        setCookie("userId", this.data.userId);
-        setCookie("identity", "学生");
-        window.location.reload();
-      },
-      toTeacher(){
-        setCookie("userId", this.data.userId);
-        setCookie("identity", "教师");
-        window.location.reload();
-      },
-      toAssistant(){
-        setCookie("userId", this.data.userId);
-        setCookie("identity", "学生");
-        window.location.reload();
-      },
-      toUserAdmin(){
-        setCookie("userId", this.data.userId);
-        setCookie("identity", "用户管理员");
-        window.location.reload();
-      },
-      toSystemAdmin(){
-        setCookie("userId", this.data.userId);
-        setCookie("identity", "系统管理员");
-        window.location.reload();
-      }
-    }
-  };
+            });
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+    toStudent() {
+      setCookie("userId", this.data.userId);
+      setCookie("identity", "学生");
+      window.location.reload();
+    },
+    toTeacher() {
+      setCookie("userId", this.data.userId);
+      setCookie("identity", "教师");
+      window.location.reload();
+    },
+    toAssistant() {
+      setCookie("userId", this.data.userId);
+      setCookie("identity", "学生");
+      window.location.reload();
+    },
+    toUserAdmin() {
+      setCookie("userId", this.data.userId);
+      setCookie("identity", "用户管理员");
+      window.location.reload();
+    },
+    toSystemAdmin() {
+      setCookie("userId", this.data.userId);
+      setCookie("identity", "系统管理员");
+      window.location.reload();
+    },
+  },
+};
 </script>
 
 <style>
-  .loginPage {
-    position: fixed;
-    height: 500px;
-    width: 600px;
-    top: 140px;
-    margin-left: 500px;
-  }
+.loginPage {
+  position: fixed;
+  height: 500px;
+  width: 600px;
+  top: 140px;
+  margin-left: 500px;
+}
 
-  .loginPage .title {
-    text-align: center;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    font-size: 20px;
-  }
+.loginPage .title {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  font-size: 20px;
+}
 </style>

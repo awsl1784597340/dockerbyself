@@ -59,6 +59,7 @@
                     <h3 style="padding-top: 110px">下图为示例格式</h3>
                     <img src="../../assets/demo.png" style="width: 80%">
                 </el-col>
+            <a src="../../static/demo.xlsx" download="demo.xlsx"></a>
         </el-row>
         </div>
 
