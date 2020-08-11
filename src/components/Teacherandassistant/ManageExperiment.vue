@@ -1,59 +1,153 @@
 /* eslint-disable */
 <template>
-    <div style="margin-left:400px;margin-top:101px">
-        <el-row :gutter="70" >
-            <el-col :span="11">
-                <h1>管理实验</h1>
-                <el-row :gutter="20">
-                    <el-col :span="9">
-                        <h3>实验所属课程号：</h3>
-                    </el-col>
-                    <el-col :span="11" style="padding-top: 10px">
-
-                        <el-input v-model="courseId" placeholder="请输入课程号" style="width: 100%"></el-input>
-                    </el-col>
-                </el-row>
-                <el-row :gutter="70" style="padding-top: 20px">
-                    <el-col :span="9">
-                        <h3>上传实验文件：</h3>
-                    </el-col>
-
-                    <el-col :span="11">
-                        <el-upload
-                                class="upload"
-                                action=""
-                                :multiple="false"
-                                :show-file-list="false"
-                                accept=""
-                                :http-request="httpRequest"
-                                style="padding-top: 10px">
-                            <el-button size="small" type="primary" plain>点击上传文件</el-button>
-                            <div slot="tip" class="el-upload__tip">请上传dockerfile</div>
-                        </el-upload>
-                    </el-col>
-
-                </el-row>
-
-                <el-row type="flex" class="row-bg" justify="center" style="padding-top: 40px">
-                    <el-col :span="10"><el-button type="primary" plain @click="assign" >确认上传</el-button></el-col>
-                </el-row>
-
+    <div style="margin-left:220px;margin-top:61px">
+        <h1>管理实验</h1>
+        <el-row :gutter="20">
+            <el-col :span="9">
+                <h3>请选取课程：</h3>
             </el-col>
-            <el-col :span="11">
+            <el-col :span="9" style="padding-top: 10px">
+                <el-select v-model="value" placeholder="请选择" style="width: 100%">
+                    <el-option
+                            v-for="(course,index) in courseArr"
+                            :key="index"
+                            :label="course.course_name"
+                            :value="course.ID">
+                    </el-option>
+                </el-select>
+<!--                <el-input v-model="courseId" placeholder="请输入课程号" style="width: 100%"></el-input>-->
+            </el-col>
+            <el-col :span="4">
+                <el-button size="small" type="primary" style="margin-top: 10px" @click="searchExperiment">点击查询</el-button>
             </el-col>
         </el-row>
+        <el-table
+                :data="experimentData"
+                style="width: 100%"
+                height="300">
+            <el-table-column
+                    fixed
+                    prop="ID"
+                    label="实验号"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="实验名"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="预习报告模板"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="实验报告模板"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="yaml配置文件"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="实验指导书"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="实验文档"
+                    width="150">
+            </el-table-column>
+        </el-table>
+
+
+
+
     </div>
 
 </template>
 
 <script>
+    import { setCookie, getCookie } from '../../js/cookieUtil'
     export default {
         name: "ManageExperiment",
         data(){
             return{
-                courseId:""
+                courseId:"",
+                courseArr:"",
+                value: '',
+                experimentData:[],
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                }]
             }
+        },
+        methods:{
+            searchExperiment(){
+                let that =this
+                console.log(that.value)
+                let val = that.value
+                this.$axios.get('/api/course/' +val+'/experiment').then(function (response) {
+                    if(response.status==200){
+                        that.experimentData=response.data.data
+                        console.log(response.data.data)
+                    }
+                })
+            }
+
+        },
+        mounted: function(){
+            let that = this
+            let identity = this.isLogin
+            if (identity == "教师") {
+                this.$axios.get('/api/admin/teachercourses')
+                    .then(function (response) {
+                        if (response.status == 200) {
+                            that.courseArr = response.data.data
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+            else {
+                this.$axios.get('/api/admin/assistantcourses')
+                    .then(function (response) {
+                        if (response.status == 200) {
+                            that.courseArr = response.data.data
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        },
+    computed: {
+        isLogin () {
+            console.log("ok")
+            let that = this
+            that.identity = getCookie("identity");
+            that.id = getCookie("id");
+            return this.identity;
         }
+    }
     }
 </script>
 
